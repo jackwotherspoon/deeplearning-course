@@ -10,23 +10,23 @@ import {
   loadSponsors, 
   loadRegistration, 
   loadTravelAndHotels 
-} from '../App';
+} from '../lazyLoad';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(() => window.matchMedia('(prefers-color-scheme: dark)').matches);
   const location = useLocation();
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setIsDark(true);
+    if (isDark) {
       document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
-  }, []);
+  }, [isDark]);
 
   const toggleTheme = () => {
     setIsDark(!isDark);
-    document.documentElement.classList.toggle('dark');
   };
 
   const navigation = [

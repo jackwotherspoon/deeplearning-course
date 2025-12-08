@@ -3,10 +3,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ArrowLeft, Loader2, CreditCard, User, Building, Mail, Utensils } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
+interface Tier {
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  popular?: boolean;
+}
+
 export const Registration = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState<'selection' | 'form' | 'success'>('selection');
-  const [selectedTier, setSelectedTier] = useState<any>(null);
+  const [selectedTier, setSelectedTier] = useState<Tier | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -18,7 +26,7 @@ export const Registration = () => {
     tshirt: 'L',
   });
 
-  const handleSelectTier = (tier: any) => {
+  const handleSelectTier = (tier: Tier) => {
     setSelectedTier(tier);
     setStep('form');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -128,7 +136,7 @@ export const Registration = () => {
             </motion.div>
           )}
 
-          {step === 'form' && (
+          {step === 'form' && selectedTier && (
             <motion.div 
               key="form" 
               initial={{ opacity: 0, y: 20 }}
@@ -303,7 +311,7 @@ export const Registration = () => {
             </motion.div>
           )}
 
-          {step === 'success' && (
+          {step === 'success' && selectedTier && (
             <motion.div 
               key="success" 
               initial={{ opacity: 0, y: 20 }}

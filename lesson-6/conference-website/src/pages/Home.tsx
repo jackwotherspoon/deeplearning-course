@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, MapPin, Users, Sparkles } from 'lucide-react';
 import { FEATURES } from '../data/features';
-import { loadCatalog, loadSponsors, loadWhyAttendDetail } from '../App';
+import { loadCatalog, loadSponsors, loadWhyAttendDetail } from '../lazyLoad';
 
 export const Home = () => {
   return (

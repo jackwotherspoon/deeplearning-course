@@ -88,7 +88,7 @@ export const FEATURES: Feature[] = [
       fullDescription: 'All work and no play makes for a dull conference. Our social events are legendary. From the welcome reception to the closing party, enjoy great food, music, and company in some of San Francisco\'s most iconic venues.',
       highlights: [
         'Opening Night Welcome Reception.',
-        'The \"AI Prom\" (formal attire optional).',
+        'The "AI Prom" (formal attire optional).',
         'Hackathon after-party.',
         'Morning yoga and run clubs.'
       ]
