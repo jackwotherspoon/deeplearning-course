@@ -20,6 +20,7 @@
   7. Key Metrics: The final counts for Total Raw Records, Unique Leads, Invalid Records, and the Hot/Warm/Cold breakdown.
 
 * When building a dashboard for lead scan data, make sure to include:
+  * Prefer using `pyproject.toml` and `uv` over `pip`
   * Overview Panel: Display key metrics (Total, Hot, Warm, Cold) using colorful cards.
   * Visualizations: Integrate Chart.js to show:
     * A Pie Chart for the Lead Segment distribution.
