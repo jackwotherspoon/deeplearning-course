@@ -28,7 +28,7 @@ const { mockSessions } = vi.hoisted(() => {
       },
       {
         id: '3',
-        title: 'AI in 2025',
+        title: 'AI in 2026',
         description: 'Future of AI',
         speaker: 'Sam Altman',
         category: 'Breakout',
@@ -53,7 +53,7 @@ describe('Catalog Page', () => {
     );
     expect(screen.getByText('React Keynote')).toBeInTheDocument();
     expect(screen.getByText('Vue Workshop')).toBeInTheDocument();
-    expect(screen.getByText('AI in 2025')).toBeInTheDocument();
+    expect(screen.getByText('AI in 2026')).toBeInTheDocument();
     expect(screen.getByText('Showing 3 sessions')).toBeInTheDocument();
   });
 

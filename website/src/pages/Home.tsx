@@ -19,7 +19,7 @@ export const Home = () => {
               transition={{ duration: 0.5 }}
             >
               <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 mb-6 border border-primary-100 dark:border-primary-800">
-                <Sparkles className="w-4 h-4 mr-2" /> November 20-22, 2025 • San Francisco, CA
+                <Sparkles className="w-4 h-4 mr-2" /> November 20-22, 2026 • San Francisco, CA
               </span>
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 dark:text-white mb-8">
                 The Future of <br />

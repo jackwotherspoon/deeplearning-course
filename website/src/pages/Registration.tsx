@@ -61,20 +61,20 @@ export const Registration = () => {
   const tiers = [
     {
       name: "Explorer",
-      price: "$499",
+      price: "$99",
       description: "Perfect for students and hobbyists.",
       features: ["Access to Keynotes", "Expo Hall Entry", "Networking App", "Conference Swag"]
     },
     {
       name: "Innovator",
-      price: "$1,299",
+      price: "$199",
       popular: true,
       description: "The full conference experience.",
       features: ["All Keynotes & Breakouts", "Workshops & Labs", "Lunch & Refreshments", "Summit Party Ticket", "Session Recordings"]
     },
     {
       name: "Visionary",
-      price: "$2,499",
+      price: "$499",
       description: "VIP access and exclusive perks.",
       features: ["VIP Seating", "Executive Lounge Access", "Private Speaker Meetups", "Gala Dinner Invite", "Concierge Service", "Everything in Innovator"]
     }

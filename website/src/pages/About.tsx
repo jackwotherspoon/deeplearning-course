@@ -18,7 +18,7 @@ export const About = () => {
               Defining the Next Era of Intelligence
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-              AI Summit 2025 isn't just a conference; it's a convergence of the brightest minds in machine learning, deep learning, and generative AI. Whether you're a researcher pushing the boundaries of what's possible or an engineer building the next generation of applications, this is your home.
+              TechStack Conference 2026 isn't just a conference; it's a convergence of the brightest minds in machine learning, deep learning, and generative AI. Whether you're a researcher pushing the boundaries of what's possible or an engineer building the next generation of applications, this is your home.
             </p>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
               We bring together industry leaders from top tech giants, disruptive startups, and academic institutions to share knowledge, debate ethics, and showcase innovations that will shape our future.

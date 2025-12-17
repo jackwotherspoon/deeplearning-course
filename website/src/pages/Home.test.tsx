@@ -22,7 +22,7 @@ describe('Home Page', () => {
 
     expect(screen.getByText(/The Future of/i)).toBeInTheDocument();
     expect(screen.getByText(/Artificial Intelligence/i)).toBeInTheDocument();
-    expect(screen.getByText(/November 20-22, 2025/i)).toBeInTheDocument();
+    expect(screen.getByText(/November 20-22, 2026/i)).toBeInTheDocument();
   });
 
   it('renders stats section', () => {

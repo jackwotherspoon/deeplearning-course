@@ -76,7 +76,7 @@ export const SessionDetail = () => {
                 <Calendar className="w-5 h-5 mr-3 text-primary-500" />
                 <div>
                   <span className="block font-semibold text-slate-900 dark:text-white">{session.day}</span>
-                  <span>November {session.day === 'Day 1' ? '20' : session.day === 'Day 2' ? '21' : '22'}, 2025</span>
+                  <span>November {session.day === 'Day 1' ? '20' : session.day === 'Day 2' ? '21' : '22'}, 2026</span>
                 </div>
               </div>
               <div className="flex items-center">

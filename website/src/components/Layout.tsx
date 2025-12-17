@@ -53,7 +53,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
               >
                 <BrainCircuit className="h-8 w-8 text-primary-600 dark:text-primary-400 group-hover:rotate-12 transition-transform" />
                 <span className="font-bold text-xl tracking-tight text-slate-900 dark:text-white">
-                  AI Summit <span className="text-primary-600 dark:text-primary-400">2025</span>
+                  TechStack Conference <span className="text-primary-600 dark:text-primary-400">2026</span>
                 </span>
               </Link>
             </div>
@@ -156,10 +156,10 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2">
               <BrainCircuit className="h-6 w-6 text-slate-400" />
-              <span className="text-slate-500 font-semibold">AI Summit 2025</span>
+              <span className="text-slate-500 font-semibold">TechStack Conference</span>
             </div>
             <p className="text-slate-400 text-sm">
-              © 2025 Fictitious AI Conference. All rights reserved.
+              © 2026 Fictitious AI Conference. All rights reserved.
             </p>
           </div>
         </div>
