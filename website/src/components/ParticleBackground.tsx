@@ -25,7 +25,7 @@ export const ParticleBackground = () => {
     let animationFrameId: number;
     let particles: Particle[] = [];
     
-    const colors = ['#3b82f6', '#60a5fa', '#93c5fd', '#2563eb']; // Blue shades (Tailwind primary colors)
+    const colors = ['#6366f1', '#818cf8', '#a5b4fc', '#4f46e5']; // Indigo shades (matching new palette)
 
     const resizeCanvas = () => {
       const parent = canvas.parentElement;
@@ -92,6 +92,26 @@ export const ParticleBackground = () => {
         ctx.fillStyle = particle.color;
         ctx.fill();
       });
+
+      // Draw connection lines between nearby particles
+      const connectionDistance = 130;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < connectionDistance) {
+            const opacity = (1 - distance / connectionDistance) * 0.25;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`; // primary-500 with dynamic opacity
+            ctx.lineWidth = 0.75;
+            ctx.stroke();
+          }
+        }
+      }
 
       animationFrameId = requestAnimationFrame(updateParticles);
     };
