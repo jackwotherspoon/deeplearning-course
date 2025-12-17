@@ -1,1 +1,1 @@
-# deeplearning-course
+# Gemini CLI DeepLearning.ai Course
