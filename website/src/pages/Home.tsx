@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, MapPin, Users, Sparkles } from 'lucide-react';
 import { FEATURES } from '../data/features';
 import { loadCatalog, loadSponsors, loadWhyAttendDetail } from '../lazyLoad';
+import { ParticleBackground } from '../components/ParticleBackground';
 
 export const Home = () => {
   return (
@@ -10,6 +11,7 @@ export const Home = () => {
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 md:pt-32 md:pb-48 bg-white dark:bg-slate-950">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        <ParticleBackground />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center max-w-4xl mx-auto">
