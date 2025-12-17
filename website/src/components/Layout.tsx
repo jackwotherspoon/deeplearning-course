@@ -81,11 +81,12 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             <div className="hidden md:flex items-center gap-4">
               <button
                 onClick={toggleTheme}
+                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
                 className="p-2 rounded-full text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
                 {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               </button>
-              <Link 
+              <Link
                 to="/registration"
                 onMouseEnter={() => loadRegistration()}
                 className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors shadow-lg shadow-primary-500/20"
@@ -98,12 +99,15 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             <div className="flex md:hidden items-center gap-4">
                <button
                 onClick={toggleTheme}
+                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
                 className="p-2 rounded-full text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
                 {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               </button>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isMenuOpen}
                 className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white p-2"
               >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
