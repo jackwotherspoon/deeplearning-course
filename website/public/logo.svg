@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <!-- Bottom Layer -->
+  <path d="M256 416L96 320L256 224L416 320L256 416Z" fill="#0369a1" opacity="0.8" filter="url(#shadow)"/>
+  
+  <!-- Middle Layer -->
+  <path d="M256 320L96 224L256 128L416 224L256 320Z" fill="#0ea5e9" opacity="0.9" filter="url(#shadow)"/>
+  
+  <!-- Top Layer (Main) -->
+  <path d="M256 224L96 128L256 32L416 128L256 224Z" fill="url(#mainGradient)" filter="url(#shadow)"/>
+  
+  <!-- Highlight on Top -->
+  <path d="M256 32L96 128L256 148L416 128L256 32Z" fill="#ffffff" opacity="0.2"/>
+</svg>
