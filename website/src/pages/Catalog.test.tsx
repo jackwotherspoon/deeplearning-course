@@ -10,7 +10,7 @@ const { mockSessions } = vi.hoisted(() => {
         id: '1',
         title: 'React Keynote',
         description: 'Deep dive into React',
-        speaker: 'Dan Abramov',
+        speaker: 'Dr. Sarah Chen',
         category: 'Keynote',
         day: 'Day 1',
         time: '10:00 AM',
@@ -20,7 +20,7 @@ const { mockSessions } = vi.hoisted(() => {
         id: '2',
         title: 'Vue Workshop',
         description: 'Hands-on with Vue',
-        speaker: 'Evan You',
+        speaker: 'Marcus Rodriguez',
         category: 'Learning Lab',
         day: 'Day 2',
         time: '2:00 PM',
@@ -30,7 +30,7 @@ const { mockSessions } = vi.hoisted(() => {
         id: '3',
         title: 'AI in 2026',
         description: 'Future of AI',
-        speaker: 'Sam Altman',
+        speaker: 'Emily Watson',
         category: 'Breakout',
         day: 'Day 1',
         time: '11:00 AM',
@@ -80,7 +80,7 @@ describe('Catalog Page', () => {
       </MemoryRouter>
     );
     const searchInput = screen.getByPlaceholderText(/Search sessions/i);
-    fireEvent.change(searchInput, { target: { value: 'Evan' } });
+    fireEvent.change(searchInput, { target: { value: 'Marcus' } });
 
     await waitFor(() => {
       expect(screen.queryByText('React Keynote')).not.toBeInTheDocument();
