@@ -16,19 +16,19 @@
     *   **Abstract:** Join our CEO for the opening keynote as we explore the groundbreaking advancements in AI technology and what lies ahead for the industry.
 
 **09:00 AM - 11:00 AM: Learning Lab**
-*   **Syndicate End-To-End Models**
+*   **End-to-End MLOps with Kubernetes**
     *   **Speaker:** Marcus Chen
     *   **Location:** Lab C
     *   **Abstract:** Learn the entire MLOps lifecycle. From data ingestion to model training, containerization, and deployment to a Kubernetes cluster.
 
 **11:00 AM - 12:00 PM: Breakout Sessions**
-*   **Brand Distributed Niches** (Room 101) - *Priya Patel*
+*   **Micro-Frontends at Scale** (Room 101) - *Priya Patel*
     *   Learn how to brand distributed niches effectively.
-*   **Unleash Real-Time Initiatives** (Room 201) - *Sarah Johnson*
+*   **Real-Time Event Streaming with Kafka** (Room 201) - *Sarah Johnson*
     *   Real-world case study on unleashing real-time initiatives.
 
 **11:00 AM - 01:00 PM: Learning Lab**
-*   **Generate Extensible Relationships**
+*   **Graph Neural Networks in Practice**
     *   **Speaker:** Isabella Martinez
     *   **Location:** Lab A
     *   **Abstract:** Workshop: Generating extensible relationships.
@@ -37,25 +37,25 @@
 *Buffet lunch served in the dining hall.*
 
 **01:00 PM - 02:00 PM: Breakout Sessions**
-*   **Streamline Customized Eyeballs** (Room 102) - *David Kim*
+*   **Optimizing React Performance** (Room 102) - *David Kim*
     *   Strategies for streamlining customized eyeballs.
-*   **E-Enable Dynamic Communities** (Room 202) - *James Wilson*
+*   **Building Scalable Community Platforms** (Room 202) - *James Wilson*
     *   How we e-enabled dynamic communities.
 
 **02:00 PM - 04:00 PM: Learning Lab**
-*   **Transition Efficient Channels**
+*   **High-Throughput Data Pipelines**
     *   **Speaker:** Robert Garcia
     *   **Location:** Lab B
     *   **Abstract:** Hands-on: Transitioning efficient channels.
 
 **02:30 PM - 03:30 PM: Breakout Sessions**
-*   **Implement Strategic Communities** (Room 103) - *Thomas Lee*
+*   **Open Source Stewardship Strategy** (Room 103) - *Thomas Lee*
     *   Implementing strategic communities for growth.
-*   **Target Holistic Web Services** (Room 203) - *Michael Brown*
+*   **Securing Modern Web APIs** (Room 203) - *Michael Brown*
     *   Targeting holistic web services effectively.
 
 **04:00 PM - 06:00 PM: Learning Lab**
-*   **E-Enable Next-Generation Web Services**
+*   **Next-Gen WebAssembly (Wasm)**
     *   **Speaker:** Lisa Wang
     *   **Location:** Lab A
     *   **Abstract:** E-Enabling next-generation web services.
@@ -74,19 +74,19 @@
     *   **Abstract:** A deep dive into the importance of ethics in AI development, ensuring safety, fairness, and transparency.
 
 **09:00 AM - 11:00 AM: Learning Lab**
-*   **Streamline B2C Experiences**
+*   **Personalization at Scale with AI**
     *   **Speaker:** Maria Hernandez
     *   **Location:** Lab C
     *   **Abstract:** Streamlining B2C experiences lab.
 
 **11:00 AM - 12:00 PM: Breakout Sessions**
-*   **Optimize Vertical Applications** (Room 101) - *Christopher Davis*
+*   **Building Vertical AI Agents** (Room 101) - *Christopher Davis*
     *   Optimizing vertical applications for better performance.
-*   **Aggregate Granular Synergies** (Room 201) - *Jennifer Martinez*
+*   **Distributed Tracing & Observability** (Room 201) - *Jennifer Martinez*
     *   Aggregating granular synergies for success.
 
 **11:00 AM - 01:00 PM: Learning Lab**
-*   **Maximize Real-Time Eyeballs**
+*   **Real-Time Analytics with Apache Flink**
     *   **Speaker:** Kevin Anderson
     *   **Location:** Lab A
     *   **Abstract:** Maximize real-time eyeballs workshop.
@@ -95,21 +95,21 @@
 *Buffet lunch served in the dining hall.*
 
 **01:00 PM - 02:00 PM: Breakout Sessions**
-*   **Redefine World-Class Bandwidth** (Room 102) - *Susan Taylor*
+*   **Edge AI: Running Models Locally** (Room 102) - *Susan Taylor*
     *   Redefining world-class bandwidth standards.
-*   **Benchmark Synergistic Vortals** (Room 202) - *Daniel White*
+*   **Benchmarking Large Language Models** (Room 202) - *Daniel White*
     *   Benchmarking synergistic vortals in the industry.
 
 **02:00 PM - 04:00 PM: Learning Lab**
-*   **Seize Next-Generation Bandwidth**
+*   **WebTransport & WebSockets Deep Dive**
     *   **Speaker:** Jessica Thomas
     *   **Location:** Lab B
     *   **Abstract:** Seize next-generation bandwidth tutorial.
 
 **02:30 PM - 03:30 PM: Breakout Sessions**
-*   **Disintermediate Back-End Web Services** (Room 103) - *Paul Moore*
+*   **Serverless vs. Edge Functions** (Room 103) - *Paul Moore*
     *   Techniques to disintermediate back-end web services.
-*   **Transform Bleeding-Edge Bandwidth** (Room 203) - *Mark Jackson*
+*   **Optimizing 5G for IoT** (Room 203) - *Mark Jackson*
     *   Transforming bleeding-edge bandwidth case study.
 
 ## ---
@@ -120,19 +120,19 @@
 *Final day breakfast.*
 
 **09:00 AM - 11:00 AM: Learning Lab**
-*   **Scale Next-Generation E-Business**
+*   **Scaling Rust for Web Services**
     *   **Speaker:** Laura Martin
     *   **Location:** Lab C
     *   **Abstract:** Scaling next-generation e-business strategies.
 
 **11:00 AM - 12:00 PM: Breakout Sessions**
-*   **Transition Holistic Models** (Room 101) - *Michelle Wu*
+*   **Migrating from Monolith to Microservices** (Room 101) - *Michelle Wu*
     *   Transitioning to holistic models seamlessly.
-*   **Mesh Customized Web Services** (Room 201) - *David O'Connell*
+*   **Service Mesh with Istio & Linkerd** (Room 201) - *David O'Connell*
     *   Meshing customized web services seamlessly.
 
 **11:00 AM - 01:00 PM: Learning Lab**
-*   **Cultivate Efficient Bandwidth**
+*   **Efficient Video Streaming Protocols**
     *   **Speaker:** Steven Thompson
     *   **Location:** Lab A
     *   **Abstract:** Cultivating efficient bandwidth deep dive.
@@ -141,27 +141,27 @@
 *Buffet lunch served in the dining hall.*
 
 **01:00 PM - 02:00 PM: Breakout Sessions**
-*   **Redefine World-Class E-Commerce** (Room 102) - *Kenneth Lewis*
+*   **Headless Commerce Architectures** (Room 102) - *Kenneth Lewis*
     *   Redefining world-class e-commerce experiences.
-*   **Monetize Next-Generation Relationships** (Room 202) - *Patricia Walker*
+*   **DevRel: Building Developer Trust** (Room 202) - *Patricia Walker*
     *   Monetizing next-generation relationships.
 
 **02:00 PM - 04:00 PM: Learning Lab**
-*   **Drive Rich Web Services**
+*   **GraphQL Federation at Scale**
     *   **Speaker:** Brian Garcia
     *   **Location:** Lab B
     *   **Abstract:** Driving rich web services masterclass.
 
 **02:30 PM - 03:30 PM: Breakout Sessions**
-*   **Engage Distributed Infrastructures** (Room 103) - *Amara Okafor*
+*   **Multi-Cloud Infrastructure Management** (Room 103) - *Amara Okafor*
     *   Engaging distributed infrastructures at scale.
-*   **Re-Intermediate Rich Communities** (Room 203) - *Tariq Al-Fayed*
+*   **Accessibility in Modern Web Apps** (Room 203) - *Tariq Al-Fayed*
     *   Re-intermediating rich communities for growth.
 
 **04:00 PM - 05:00 PM: Closing Breakout Sessions**
-*   **E-Enable Efficient Schemas** (Room 104) - *Wei Zhang*
+*   **Advanced PostgreSQL Patterns** (Room 104) - *Wei Zhang*
     *   E-Enabling efficient schemas for data.
-*   **Streamline Clicks-And-Mortar Functionalities** (Room 204) - *Mateo Fernandez*
+*   **Bridging Digital & Physical Retail** (Room 204) - *Mateo Fernandez*
     *   Streamlining clicks-and-mortar functionalities.
 
 **05:00 PM - 05:30 PM: Closing Remarks**
