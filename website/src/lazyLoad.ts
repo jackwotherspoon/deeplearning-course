@@ -6,4 +6,5 @@ export const loadRegistration = () => import('./pages/Registration').then(module
 export const loadTravelAndHotels = () => import('./pages/TravelAndHotels').then(module => ({ default: module.TravelAndHotels }));
 export const loadSessionDetail = () => import('./pages/SessionDetail').then(module => ({ default: module.SessionDetail }));
 export const loadSponsors = () => import('./pages/Sponsors').then(module => ({ default: module.Sponsors }));
+export const loadSocials = () => import('./pages/Socials').then(module => ({ default: module.Socials }));
 export const loadWhyAttendDetail = () => import('./pages/WhyAttendDetail').then(module => ({ default: module.WhyAttendDetail }));
