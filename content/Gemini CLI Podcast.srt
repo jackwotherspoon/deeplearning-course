@@ -1,0 +1,1060 @@
+1
+00:00:00,000 --> 00:00:05,800
+This week, on The Agent Factory, it's the agentic looping action.
+
+2
+00:00:05,800 --> 00:00:08,000
+I'm not very good at like sitting down and reading.
+
+3
+00:00:08,000 --> 00:00:11,800
+My re-later folder has its own gravitational pull.
+
+4
+00:00:11,800 --> 00:00:16,000
+With AI, using AI these days, it is so easy to 10x to yourself.
+
+5
+00:00:16,000 --> 00:00:19,000
+100x and that's the hard part.
+
+6
+00:00:19,000 --> 00:00:22,000
+Yeah, and my mom watches these, so mom, I'm still alive.
+
+7
+00:00:22,000 --> 00:00:32,000
+Hi, everyone, and welcome to The Agent Factory, the podcast that goes beyond the hype,
+
+8
+00:00:32,000 --> 00:00:35,000
+and dives into building production-ready AI agents.
+
+9
+00:00:35,000 --> 00:00:37,000
+I'm Molly Bennett.
+
+10
+00:00:37,000 --> 00:00:38,000
+And I'm Emma Morage.
+
+11
+00:00:38,000 --> 00:00:42,000
+And today, we're going to be diving deep into the Gemini CLI.
+
+12
+00:00:42,000 --> 00:00:48,000
+So we used the CLI a bit in our last episode, including this live vibe coding demo
+
+13
+00:00:48,000 --> 00:00:49,000
+that was a ton of fun.
+
+14
+00:00:49,000 --> 00:00:52,000
+I suggest you check it out if you haven't seen it yet.
+
+15
+00:00:52,000 --> 00:00:55,000
+I'm really excited to show it off in more detail.
+
+16
+00:00:55,000 --> 00:01:01,000
+And for anyone who hasn't heard or haven't, hasn't heard of or used the Gemini CLI yet,
+
+17
+00:01:01,000 --> 00:01:05,000
+it's a really powerful agent, lives right in your command line,
+
+18
+00:01:05,000 --> 00:01:09,000
+and it's designed to help you with your everyday workflows.
+
+19
+00:01:09,000 --> 00:01:14,000
+Yeah, and I'm really excited because in this episode, we're actually going to show you how to use Gemini CLI
+
+20
+00:01:14,000 --> 00:01:18,000
+or getting up to speed on a new code base, super charging your research,
+
+21
+00:01:18,000 --> 00:01:22,000
+and how you can use it to integrate it into your own automations.
+
+22
+00:01:22,000 --> 00:01:26,000
+Yeah, and to help us do that, we're very excited to have Taylor Mullin,
+
+23
+00:01:26,000 --> 00:01:29,000
+the creator of Gemini CLI with us today.
+
+24
+00:01:29,000 --> 00:01:33,000
+We're going to pick his brain about the philosophy behind the tool,
+
+25
+00:01:33,000 --> 00:01:36,000
+and what's next on the roadmap, which I'm very excited to hear about.
+
+26
+00:01:36,000 --> 00:01:37,000
+Yeah, I can't wait.
+
+27
+00:01:37,000 --> 00:01:40,000
+I mean, I've been using the CLI now for a few weeks,
+
+28
+00:01:40,000 --> 00:01:43,000
+and I already feel like it's become a mainstay in my workflow.
+
+29
+00:01:43,000 --> 00:01:45,000
+What about you, Molly, what's your take?
+
+30
+00:01:45,000 --> 00:01:47,000
+Oh, yeah, no, I'm totally sold.
+
+31
+00:01:47,000 --> 00:01:51,000
+For me, the biggest thing is that it lives in the terminal,
+
+32
+00:01:51,000 --> 00:01:55,000
+where I do my work, and I was also able to add a directly to VS code,
+
+33
+00:01:55,000 --> 00:01:58,000
+the IDE I use, so that was super handy.
+
+34
+00:01:58,000 --> 00:02:01,000
+Yeah, I feel like having it integrated into so many different tools
+
+35
+00:02:01,000 --> 00:02:03,000
+makes it indispensable.
+
+36
+00:02:03,000 --> 00:02:06,000
+And also on that note, having Taylor with us here today,
+
+37
+00:02:06,000 --> 00:02:10,000
+who's going to be able to tell us even more about the background in philosophy,
+
+38
+00:02:10,000 --> 00:02:13,000
+behind Gemini CLI, will be invaluable.
+
+39
+00:02:13,000 --> 00:02:19,000
+But before we talk to Taylor, let's get hands-on with some demos on the facts before.
+
+40
+00:02:19,000 --> 00:02:25,000
+Let's tackle a universal developer problem,
+
+41
+00:02:25,000 --> 00:02:28,000
+which is onboarding onto a new code base.
+
+42
+00:02:28,000 --> 00:02:30,000
+I think all of us have had to do this at some point.
+
+43
+00:02:30,000 --> 00:02:36,000
+I'm going to go ahead and show how the Gemini CLI can help speed up this onboarding process.
+
+44
+00:02:37,000 --> 00:02:41,000
+Okay, yeah, so code base exploration, that sounds pretty cool.
+
+45
+00:02:41,000 --> 00:02:45,000
+And I feel like this will also be a really good showcase for Gemini CLI's massive
+
+46
+00:02:45,000 --> 00:02:48,000
+1 million token context window.
+
+47
+00:02:48,000 --> 00:02:52,000
+I feel like that's kind of the difference between asking questions about a single file
+
+48
+00:02:52,000 --> 00:02:55,000
+versus maybe the entire architecture all at one.
+
+49
+00:02:55,000 --> 00:02:57,000
+Yeah, yeah, totally.
+
+50
+00:02:57,000 --> 00:03:02,000
+And so to start, I'm actually not even going to clone the repo myself.
+
+51
+00:03:02,000 --> 00:03:05,000
+I'm just going to ask the agent to do it for me.
+
+52
+00:03:05,000 --> 00:03:09,000
+So I've decided to use Google's ADK repo for this example.
+
+53
+00:03:09,000 --> 00:03:12,000
+So ADK stands for agent development kit.
+
+54
+00:03:12,000 --> 00:03:20,000
+So I'm just going to say clone the Google ADK Python repo from GitHub.
+
+55
+00:03:20,000 --> 00:03:25,000
+And I'm going to see what it does.
+
+56
+00:03:25,000 --> 00:03:31,000
+Okay, so it's searching the web trying to find the right link.
+
+57
+00:03:31,000 --> 00:03:32,000
+Awesome.
+
+58
+00:03:32,000 --> 00:03:33,000
+It found the right link.
+
+59
+00:03:33,000 --> 00:03:36,000
+It's asking me for permission to clone it.
+
+60
+00:03:36,000 --> 00:03:41,000
+Go ahead.
+
+61
+00:03:41,000 --> 00:03:42,000
+Cool.
+
+62
+00:03:42,000 --> 00:03:45,000
+Yeah, and this looks like it's the agent group in action.
+
+63
+00:03:45,000 --> 00:03:48,000
+It's kind of reasoning that it needs a piece of information.
+
+64
+00:03:48,000 --> 00:03:51,000
+It then chooses a tool to get that information looks like.
+
+65
+00:03:51,000 --> 00:03:54,000
+And then it uses that information to complete the original request.
+
+66
+00:03:54,000 --> 00:03:58,000
+And then also at the same time, it asks you if you want to proceed.
+
+67
+00:03:58,000 --> 00:03:59,000
+Checking back in.
+
+68
+00:03:59,000 --> 00:04:02,000
+So yeah, this is a super helpful workflow.
+
+69
+00:04:02,000 --> 00:04:12,000
+I think the way I want to tackle this is let's imagine that we're like a new contributor to this project.
+
+70
+00:04:12,000 --> 00:04:19,000
+What do you think is the first like what's the first thing you'd want to do if you were a new contributor to a project and you wanted to figure out how to go forward.
+
+71
+00:04:19,000 --> 00:04:22,000
+Feel like I would want to get a high level understanding of the project.
+
+72
+00:04:22,000 --> 00:04:25,000
+I think I learned best maybe from like a top down perspective.
+
+73
+00:04:25,000 --> 00:04:29,000
+Things like text stack, how code of structure, stuff like that.
+
+74
+00:04:29,000 --> 00:04:33,000
+Yeah, yeah, totally like in the past.
+
+75
+00:04:33,000 --> 00:04:36,000
+And then not so distant past actually.
+
+76
+00:04:36,000 --> 00:04:39,000
+You know, you might start with like reading a read me file.
+
+77
+00:04:39,000 --> 00:04:42,000
+Maybe contributing file.
+
+78
+00:04:42,000 --> 00:04:45,000
+You know, start piecing things together that way.
+
+79
+00:04:45,000 --> 00:04:46,000
+And like.
+
+80
+00:04:46,000 --> 00:04:51,000
+I'm not very good at like sitting down and reading a huge amount of documentation to be quite honest.
+
+81
+00:04:51,000 --> 00:04:58,000
+So instead, I'm going to ask the Gemini CLI to perform a high level audit of the entire directory.
+
+82
+00:04:58,000 --> 00:05:01,000
+So let's see.
+
+83
+00:05:01,000 --> 00:05:05,000
+I'm going to ask the Gemini CLI agent for a complete project overview.
+
+84
+00:05:05,000 --> 00:05:12,000
+I want it to tell me the purpose, the text stack and analyze architecture all in one go.
+
+85
+00:05:12,000 --> 00:05:19,000
+Yeah, and I feel like that's much more powerful than just relying on one read me document.
+
+86
+00:05:19,000 --> 00:05:22,000
+This way you can kind of point at the whole directory.
+
+87
+00:05:22,000 --> 00:05:25,000
+And it's cool because you're asking it to like synthesize everything.
+
+88
+00:05:25,000 --> 00:05:32,000
+The source, file, the docs, all of the code into a single coherent sort of overview, right?
+
+89
+00:05:32,000 --> 00:05:33,000
+Yeah.
+
+90
+00:05:33,000 --> 00:05:34,000
+Yeah, absolutely.
+
+91
+00:05:34,000 --> 00:05:43,000
+Yeah, it's like it's ingesting the entire directory to build out this like complete mental model of the project, which is super helpful.
+
+92
+00:05:43,000 --> 00:05:45,000
+Okay, great.
+
+93
+00:05:45,000 --> 00:05:53,000
+Starting to output this looks really good and helpful.
+
+94
+00:05:53,000 --> 00:05:59,000
+Yeah, identified the purpose, the text stack, core dependencies, all that good stuff.
+
+95
+00:05:59,000 --> 00:06:02,000
+That's like helpful to kind of know what the outlet.
+
+96
+00:06:02,000 --> 00:06:04,000
+Yeah, it's really verbose what it did.
+
+97
+00:06:04,000 --> 00:06:08,000
+Summary, I wouldn't have been able to write it better myself, right?
+
+98
+00:06:08,000 --> 00:06:09,000
+Yeah.
+
+99
+00:06:09,000 --> 00:06:12,000
+And now for the part of the show that we've both been waiting for.
+
+100
+00:06:12,000 --> 00:06:17,000
+We're going to shift gears and get a deep dive into the philosophy and future of Gemini CLI.
+
+101
+00:06:17,000 --> 00:06:23,000
+We'd now like to welcome to the podcast Taylor Mullin, creator of Gemini CLI.
+
+102
+00:06:23,000 --> 00:06:25,000
+Taylor, thank you so much for joining us.
+
+103
+00:06:25,000 --> 00:06:26,000
+Thanks for having me.
+
+104
+00:06:26,000 --> 00:06:27,000
+This is fun to be here.
+
+105
+00:06:27,000 --> 00:06:29,000
+Yeah, so let's start at the very beginning.
+
+106
+00:06:29,000 --> 00:06:33,000
+Could you tell us the origin story of the Gemini CLI?
+
+107
+00:06:33,000 --> 00:06:37,000
+Like, what was the initial spark or inspiration that led to it?
+
+108
+00:06:37,000 --> 00:06:38,000
+And how did things go from there?
+
+109
+00:06:38,000 --> 00:06:39,000
+I'm very curious to hear.
+
+110
+00:06:39,000 --> 00:06:41,000
+Oh, yeah, it's kind of crazy.
+
+111
+00:06:41,000 --> 00:06:45,000
+It started about a year and a half ago, weirdly enough, right?
+
+112
+00:06:45,000 --> 00:06:46,000
+It's so long ago.
+
+113
+00:06:46,000 --> 00:06:54,000
+But like, at the time, I was experimenting with multi agent systems and trying to get like the most out of our elements.
+
+114
+00:06:54,000 --> 00:07:00,000
+And so at the time, like, I had the system where the multiple personas, they were talking to each other and they were doing a lot of cool things.
+
+115
+00:07:00,000 --> 00:07:02,000
+And it was surfaced in a lot of different ways.
+
+116
+00:07:02,000 --> 00:07:06,000
+It was surfaced in IDE, it was surfaced in a CLI.
+
+117
+00:07:06,000 --> 00:07:08,000
+It was surfaced in the web.
+
+118
+00:07:08,000 --> 00:07:14,000
+And as I was playing with these things, the thing that really stuck for me was the CLI.
+
+119
+00:07:14,000 --> 00:07:17,000
+It was so easy to use, so lightweight.
+
+120
+00:07:17,000 --> 00:07:27,000
+But at the time, like, it took 30 requests, like one user request resulted in like 30 LLM requests behind the scenes.
+
+121
+00:07:27,000 --> 00:07:30,000
+And those 30 requests was a lot for the time.
+
+122
+00:07:30,000 --> 00:07:33,000
+It took a minute and a half to respond to anything.
+
+123
+00:07:33,000 --> 00:07:35,000
+And the quality was there.
+
+124
+00:07:35,000 --> 00:07:39,000
+Like, this was something at the time that was just too much.
+
+125
+00:07:39,000 --> 00:07:42,000
+Like, we also have limited context window.
+
+126
+00:07:42,000 --> 00:07:50,000
+And so in that realm, it being a CLI and it having all these constraints, we scrapped the project.
+
+127
+00:07:50,000 --> 00:07:52,000
+And that was kind of challenging at the time.
+
+128
+00:07:52,000 --> 00:07:54,000
+It was almost a little bit too early.
+
+129
+00:07:54,000 --> 00:07:55,000
+Yeah.
+
+130
+00:07:55,000 --> 00:08:00,000
+It was one of those things like, okay, no one's going to want to use this because it cost too much.
+
+131
+00:08:00,000 --> 00:08:02,000
+It couldn't absorb enough information.
+
+132
+00:08:02,000 --> 00:08:08,000
+And it took too long to respond, which is kind of a trippy thing like fast forwarding today, right?
+
+133
+00:08:08,000 --> 00:08:11,000
+We're very much used to, you have deep research, like you click a button.
+
+134
+00:08:11,000 --> 00:08:15,000
+And then you go off and you get a coffee and you come back and hopefully it's done.
+
+135
+00:08:15,000 --> 00:08:16,000
+And it's crazy.
+
+136
+00:08:16,000 --> 00:08:18,000
+It's so different.
+
+137
+00:08:18,000 --> 00:08:22,000
+But during that time, like, it was too early.
+
+138
+00:08:22,000 --> 00:08:28,000
+And then today, like me, Google and me, I'm really trying to like build this future of developer tools.
+
+139
+00:08:28,000 --> 00:08:34,000
+Like, there was this ecosystem of CLIs that was just taking hold in the community, right?
+
+140
+00:08:34,000 --> 00:08:38,000
+And it really proved that people are willing to wait.
+
+141
+00:08:38,000 --> 00:08:42,000
+People are willing to use a CLI.
+
+142
+00:08:42,000 --> 00:08:45,000
+And they find it, they found it as compelling as they I did back then.
+
+143
+00:08:45,000 --> 00:08:47,000
+It's like, when all this started to happen, I'm like, oh my goodness.
+
+144
+00:08:47,000 --> 00:08:52,000
+Maybe I was just too early and maybe we should try and give this another go.
+
+145
+00:08:52,000 --> 00:08:58,000
+And so that like, I really grounded at least the motivation of saying, okay, I've done this before.
+
+146
+00:08:58,000 --> 00:09:05,000
+And like, I've learned a lot over my entire career of what it means to build developer tools and what it means.
+
+147
+00:09:05,000 --> 00:09:10,000
+It's like, build something that can kind of span a lot of ecosystems.
+
+148
+00:09:10,000 --> 00:09:13,000
+And so we started Gemini CLI from that point.
+
+149
+00:09:13,000 --> 00:09:17,000
+So it's like, I basically, I went dark, obviously, I went dark for like a week.
+
+150
+00:09:17,000 --> 00:09:20,000
+And I'm like, okay, I'm going to do this.
+
+151
+00:09:20,000 --> 00:09:24,000
+I have this idea that went dark for a week, talked to no one, spent every waking second,
+
+152
+00:09:24,000 --> 00:09:27,000
+was getting like five to six hours of sleep in the night.
+
+153
+00:09:27,000 --> 00:09:30,000
+And this was like, I think it was like Saturday through Saturday.
+
+154
+00:09:30,000 --> 00:09:32,000
+Saturday through Sunday or something like that.
+
+155
+00:09:32,000 --> 00:09:36,000
+And then like that Monday, I had a prototype, did a video.
+
+156
+00:09:36,000 --> 00:09:41,000
+I put it out and Googlers started just going like wild for it.
+
+157
+00:09:41,000 --> 00:09:42,000
+It was super cool.
+
+158
+00:09:42,000 --> 00:09:44,000
+Yeah, thanks so much for sharing that.
+
+159
+00:09:44,000 --> 00:09:50,000
+And so I guess building on that, you know, making the Gemini CLI open source was a very deliberate choice, I think,
+
+160
+00:09:50,000 --> 00:09:55,000
+which you've linked to security and learning and a whole host of other things.
+
+161
+00:09:55,000 --> 00:10:04,000
+So how does this open, trust-based approach contrast with the more like black box nature of other maybe major AI tools out there?
+
+162
+00:10:04,000 --> 00:10:10,000
+And what kind of ecosystem do you hope that this will foster the transparency will foster?
+
+163
+00:10:10,000 --> 00:10:12,000
+Yeah, it's like to be frigate.
+
+164
+00:10:12,000 --> 00:10:15,000
+I started my career in open source.
+
+165
+00:10:15,000 --> 00:10:21,000
+Like I have always been in developer tooling or framework to one thing and the other and open source has been like front and center.
+
+166
+00:10:21,000 --> 00:10:25,000
+So like from day zero, that was a key thing in my head.
+
+167
+00:10:25,000 --> 00:10:28,000
+But most folks feel like, oh, it's open source.
+
+168
+00:10:28,000 --> 00:10:30,000
+Why would you not go ahead and do it?
+
+169
+00:10:30,000 --> 00:10:32,000
+Open source is not free.
+
+170
+00:10:32,000 --> 00:10:33,000
+It's not free.
+
+171
+00:10:33,000 --> 00:10:36,000
+It's actually a very challenging thing to get right.
+
+172
+00:10:36,000 --> 00:10:39,000
+But oh my gosh, it's so rewarding when you do.
+
+173
+00:10:39,000 --> 00:10:45,000
+So like knowing this, it was always this question like, okay, let's weigh the actual balance.
+
+174
+00:10:45,000 --> 00:10:52,000
+Like should it be open source should not be in the answers ended being like obviously it should be open source, like especially with a CLI tool like this.
+
+175
+00:10:52,000 --> 00:10:57,000
+That's forward like for a wide variety of people and of course developers as well.
+
+176
+00:10:57,000 --> 00:11:03,000
+But something that people could see and could understand, okay, it's running on my box.
+
+177
+00:11:03,000 --> 00:11:05,000
+It has a lot of capability.
+
+178
+00:11:05,000 --> 00:11:07,000
+So what does it do and can I trust it?
+
+179
+00:11:07,000 --> 00:11:10,000
+It's like that kind of like you mentioned the security aspect.
+
+180
+00:11:10,000 --> 00:11:14,000
+That was one of our biggest reasons for like open sourcing this.
+
+181
+00:11:14,000 --> 00:11:17,000
+We want people to see exactly how it operates.
+
+182
+00:11:17,000 --> 00:11:19,000
+So they can have they can have trust.
+
+183
+00:11:19,000 --> 00:11:21,000
+They know we're not doing anything behind the scenes.
+
+184
+00:11:21,000 --> 00:11:23,000
+They know exactly what's happening.
+
+185
+00:11:23,000 --> 00:11:27,000
+And also means that if we make a mistake.
+
+186
+00:11:27,000 --> 00:11:32,000
+That we can fix it that we have the entire community to help keep us grounded.
+
+187
+00:11:32,000 --> 00:11:37,000
+And what makes the most secure sense we to be frank, we struggle to keep up.
+
+188
+00:11:37,000 --> 00:11:41,000
+We totally struggle to keep up with all the energy they give.
+
+189
+00:11:41,000 --> 00:11:45,000
+But to be frank, it's one of the most important things that we have.
+
+190
+00:11:45,000 --> 00:11:53,000
+And so when people ask me like, what is the number one thing that's on your mind for Jim and I see a line like it's our open source community.
+
+191
+00:11:53,000 --> 00:11:55,000
+Like by far, it's number one.
+
+192
+00:11:55,000 --> 00:11:58,000
+And that's like, I think we've shut down the team.
+
+193
+00:11:58,000 --> 00:12:06,000
+Like literally everyone on the team for like days in order to make sure that we can try and keep up with the amount of traction and the amount of energy coming at us.
+
+194
+00:12:06,000 --> 00:12:08,000
+But I think that's because we see the value.
+
+195
+00:12:08,000 --> 00:12:13,000
+We see how valuable it is to kind of build this in the open together.
+
+196
+00:12:13,000 --> 00:12:17,000
+So that folks have that confidence that we're doing the right thing.
+
+197
+00:12:17,000 --> 00:12:21,000
+And we have that confidence we're building the right things as well.
+
+198
+00:12:21,000 --> 00:12:22,000
+And it's funny.
+
+199
+00:12:22,000 --> 00:12:24,000
+We actually still do the updates today.
+
+200
+00:12:24,000 --> 00:12:35,000
+Actually on all of our socials will post every single week on Wednesdays will post like 100 to 150 features weekly features bugs enhancements all the above.
+
+201
+00:12:35,000 --> 00:12:38,000
+You said 150 features a week, right?
+
+202
+00:12:38,000 --> 00:12:41,000
+That's a lot.
+
+203
+00:12:41,000 --> 00:12:46,000
+What are the mechanisms that you use you and the team used to make that possible?
+
+204
+00:12:46,000 --> 00:12:50,000
+Because we use it to build itself like it allows us to.
+
+205
+00:12:50,000 --> 00:12:58,000
+Allow us to do a lot more like one of the coolest things I think that we started doing is when you teach it to boot itself.
+
+206
+00:12:58,000 --> 00:13:03,000
+It means it can spin up parallel like threads simultaneously.
+
+207
+00:13:03,000 --> 00:13:06,000
+And each of those can go ahead and tackle different problems.
+
+208
+00:13:06,000 --> 00:13:14,000
+Combine that with work get work trees and you're going even further so far gone are the days of being able to ship like twice a year.
+
+209
+00:13:14,000 --> 00:13:17,000
+Which is a huge part of software historically.
+
+210
+00:13:17,000 --> 00:13:22,000
+Because in AI every single week is like an insane amount of time.
+
+211
+00:13:22,000 --> 00:13:25,000
+Every single month is like yeah.
+
+212
+00:13:25,000 --> 00:13:27,000
+Absolutely.
+
+213
+00:13:27,000 --> 00:13:32,000
+So I think it's it's honestly it's just that it's a mindset such cultural thing that we've built.
+
+214
+00:13:32,000 --> 00:13:36,000
+And I also want to kind of acknowledge our open source community again as well.
+
+215
+00:13:36,000 --> 00:13:43,000
+Which is they really help make it possible because without folks really contributing helping each other out even.
+
+216
+00:13:43,000 --> 00:13:53,000
+I don't know how easy it would it would be like we put human eyes on every single one of the changes that go and we don't we're not just like letting things go without looking at them.
+
+217
+00:13:53,000 --> 00:14:03,000
+It's just we have a lot of really passionate really smart capable and motivated people to kind of make the right decisions at scale.
+
+218
+00:14:03,000 --> 00:14:12,000
+You use Gemini CLI to build Gemini CLI so I'm curious to tell a little bit more about how that journey started and and kind of what was your favorite part of it.
+
+219
+00:14:12,000 --> 00:14:18,000
+Yeah, it's kind of nuts like I still remember actually the first feature it built for itself.
+
+220
+00:14:18,000 --> 00:14:25,000
+Which is it's kind of crazy it was I see it's so long but it really wasn't that long ago.
+
+221
+00:14:25,000 --> 00:14:31,000
+But early on we knew that markdown rendering was going to be important right.
+
+222
+00:14:31,000 --> 00:14:38,000
+So I'm sitting there and I'm trying to build out its ability to render mark down a set of seeing the raw markdowns in the terminal.
+
+223
+00:14:38,000 --> 00:14:51,000
+And there was a lot of utilities and frameworks to make this possible and I kept I forget the exact of the wall that I was hitting but I kept hitting a wall and using one of these frameworks that was like just a limiter and this was a hard stop for me.
+
+224
+00:14:51,000 --> 00:15:04,000
+And okay, like I need to progress I need to do something and I ended up asking hey like what are my options as the first I'm just asking is that when I was asking it more questions to tell learn more.
+
+225
+00:15:04,000 --> 00:15:09,000
+And it's like oh I can write a markdown parser for you.
+
+226
+00:15:09,000 --> 00:15:18,000
+I said cool go for it. And so this is the first time when it one shot its own markdown rendering.
+
+227
+00:15:18,000 --> 00:15:22,000
+And to be frank the variant of that is still used today that actually renders.
+
+228
+00:15:22,000 --> 00:15:28,000
+So if you're ever curious like if like Gemini CLI has written a significant amount of its own code.
+
+229
+00:15:28,000 --> 00:15:31,000
+It's super significant amount so cool.
+
+230
+00:15:31,000 --> 00:16:00,000
+Yeah, it's we doubt like I think the biggest thing that we think about on the team is with AI using AI these days it is so easy to 10X yourself which sounds crazy to say but 10Xing is easy these days 100Xing that's the hard part like that is where you really start getting into how can I parallelize my workflows to make sure my time that I'm investing in each of these things is best spent.
+
+231
+00:16:00,000 --> 00:16:17,000
+Because models themselves that we talked about it there like there's so much that's left unsaid when asking a question they it still needs human feedback a lot of the times in order to be effective like things don't just get one shot of the right of course you see that in all the videos out there and like all the highlights.
+
+232
+00:16:17,000 --> 00:16:28,000
+But one shoting rarely happens so how do you optimize your time to make it so that multi shot scenarios are the land super well they can really amplify what you do.
+
+233
+00:16:28,000 --> 00:16:43,000
+Another thing I'm curious about is are there any like methodologies you think about when using Gemini CLI like what's your mentality on how the tool operates is grounded in a lot of my developer background especially with AI.
+
+234
+00:16:43,000 --> 00:17:07,000
+Which is I personally feel like there's so much that's left unsaid when people will do a prop so like one of the big things is this is context engineering it's kind of grounded in the same mindset which is when you ask a question to your AI of choice you're giving it as much information as you possibly can to enable it to derive the right answer.
+
+235
+00:17:07,000 --> 00:17:26,000
+Now of course you're also leaning on its ability to like figure out more information and dig through your co base or whatever you're by doing at the time but that alone is really challenging spot because it can't know those offline conversations you have with your colleague or your friend it can't know.
+
+236
+00:17:27,000 --> 00:17:45,000
+Usually doesn't know your emails and your chat messages but it doesn't typically know that all those pieces of context really feed into building a coherent response so if you're currently writing tests and you ask to go ahead and implement something chances are you want to implement that in the form of tests.
+
+237
+00:17:45,000 --> 00:18:14,000
+Your current workflow that methodology though it kind of rings true with every decision we make I think the thing I tell the team is that do what a person would do and don't take shortcuts so one thing I might be surprising to folks is we don't use embeddings like for instance for search we do not index your code base we do a gentick search which means how you as a person or use as a developer would dig through a piece of code we do the same thing.
+
+238
+00:18:15,000 --> 00:18:41,000
+We'll do fine we'll do we'll we'll grab our way through the code base we'll open files or read them will effectively run commands like find all references on your behalf if we need to to find out what's the next piece of the puzzle because in the end we're trying to provide the right context to the LM so that it's grounded in every single thing it does to come to a good a good result so I think you think it's probably it was probably the biggest one.
+
+239
+00:18:42,000 --> 00:18:53,000
+I think that kind of really resonates with us something that I think is really cool is like maybe I'll ask the CLI to do something and it'll try to do the thing but be like well I can't actually do this.
+
+240
+00:18:54,000 --> 00:19:05,000
+But then you'll give me the steps that it needs to take in order to do it and be like are you okay with me going ahead and doing these steps to do the thing that I need to do to get to your original request which is very cool.
+
+241
+00:19:06,000 --> 00:19:25,000
+I love that's the that's such a huge unlock is the we call it self-healing it's ability to self-heal goes so far and like when it they'll try things like it has a good idea of what's on your box and to try to use all those things that when it can't do it it's so good at coming of other alternatives like I recall this one scenario.
+
+242
+00:19:25,000 --> 00:19:36,000
+I was talking to our marketing folks and I was giving them a demo to show what it could do and then the first question was oh can I like can you give me a link to this and I'm like oh.
+
+243
+00:19:37,000 --> 00:19:47,000
+It's we don't we don't have built in like deploy functionality like there's a cloud run and there's a cloud run extension actually being released very soon that will enable this just the folks know.
+
+244
+00:19:48,000 --> 00:19:53,000
+But we don't have that built in and so they're asking how can you do this I'm like okay well let me just ask.
+
+245
+00:19:54,000 --> 00:20:16,000
+And what it did is it ended up like creating a GitHub repository and GitHub repositories have a thing called GitHub pages which allows you to host static content and then it pushed this content to it and it gave me a link and I gave it I'm like I had never even considered that my question was how do I give this person like it but all the other pieces together to kind of make that a reality.
+
+246
+00:20:16,000 --> 00:20:30,000
+Like the scrap scrapiest developer yeah I'm almost thinking of the use case where I'm like hey Gemini CLI how can I like tell my mom that I'm still alive like up there and it'll like ask me maybe you should do that but hear the steps that I would take like are you okay.
+
+247
+00:20:31,000 --> 00:20:33,000
+I think about the text messages and whatever.
+
+248
+00:20:34,000 --> 00:20:38,000
+Totally yeah and my mom watches these so mom I'm still alive.
+
+249
+00:20:38,000 --> 00:20:47,000
+Well and also a moment ago you mentioned something about like an upcoming feature on the roadmap.
+
+250
+00:20:48,000 --> 00:20:55,000
+So what else like what else is coming up on the roadmap like are there any features coming up that you're most excited for.
+
+251
+00:20:55,000 --> 00:21:12,000
+Because we view Gemini CLI as being a lot more than just developers and because we've seen internally it's unlocking every profession whether you're a marketer or a financial to of course the software developer it kind of tax that hits all those buttons to make it so we can work with every one of these professions.
+
+252
+00:21:13,000 --> 00:21:24,000
+We're really doubling down an extensibility so you can heavily extend Gemini CLI and this is not just MCP servers this is literally you can install an extension which is a bundle of it could be available.
+
+253
+00:21:25,000 --> 00:21:35,000
+MCP servers specific instructions specific commands lots of different things to drive a different so this is the cloud run one that I had mentioned earlier they have an extension.
+
+254
+00:21:36,000 --> 00:21:48,000
+And this extension can be Gemini extensions install and then even passing cloud run and it's seamless installation but enables you to really curate the experience to your like your preferences.
+
+255
+00:21:48,000 --> 00:22:08,000
+So for instance if you are like a go developer and you want to make sure your environment is super go friendly like you'll install the right MCP servers to make that happen right or if you are it's a content generator maybe you'll hook it up to all your various socials maybe you'll create a generative media APIs you'll also hook that up to it.
+
+256
+00:22:08,000 --> 00:22:33,000
+So being able to turn these on and off is something that's super important to us because we know that there's a lot of use cases and so the big so that's the biggest feature that we're going to be talking about soon which is how to build these extensions how to install them manage them with the intention of making this super seamless for people where people can spin up their own registries for they want to we're going to have eventually going to have like a centralized registry for all of our extensions.
+
+257
+00:22:34,000 --> 00:22:43,000
+But the extension ecosystem is going to be the big one I can't wait to see what people build like we have a number of them coming out from Google from from cloud.
+
+258
+00:22:45,000 --> 00:22:50,000
+And just in general to really hook Gemini CLI into everything in a really seamless way.
+
+259
+00:22:51,000 --> 00:23:01,000
+Yeah Taylor I just wanted to thank you so much for sharing your insights with us in our audience of agent builders it's been a fascinating look behind the curtain of Gemini CLI and you've shared so much with us so so I want to thank you.
+
+260
+00:23:02,000 --> 00:23:27,000
+Oh thanks for having me this has been an amazing conversation like I love I love diving in and especially love just sharing stories and if you haven't checked this out checks out on GitHub you'll find us all the amazing like Gemini Google dash Gemini slash Gemini CLI and get up and then of course you can look for us in socials as well to get those weekly updates that we push out regularly.
+
+261
+00:23:28,000 --> 00:23:31,000
+Oh yeah good plug yeah thank you so much Taylor this is so fun.
+
+262
+00:23:32,000 --> 00:23:33,000
+Yeah thanks so much Taylor.
+
+263
+00:23:34,000 --> 00:23:41,000
+And that's our show for today thank you for joining us for this deep dive into the Gemini CLI we highly recommend you try it out for yourself.
+
+264
+00:23:42,000 --> 00:23:53,000
+And if you enjoyed this episode of the agent factory check us out next time where we'll continue diving into the world of AI agents until then I'm Emmett Mirage and I'm Molly Pettit.
+
+265
+00:23:53,000 --> 00:23:55,000
+Power it down.
+
