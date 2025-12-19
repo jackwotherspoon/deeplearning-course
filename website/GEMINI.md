@@ -56,3 +56,5 @@ This is the official website for the **TechStack Conference**, a web application
 
 ### Testing
 *   **Unit/Integration Tests:** Located alongside components (e.g., `Home.test.tsx`). Use `npm run test` to execute.
+
+
