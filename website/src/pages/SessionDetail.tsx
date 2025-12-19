@@ -58,6 +58,8 @@ export const SessionDetail = () => {
                 session.category === 'Breakout' && "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800",
                 session.category === 'Learning Lab' && "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:border-emerald-800",
                 session.category === 'Customer Story' && "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800",
+                session.category === 'Expo' && "bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:border-rose-800",
+                !['Keynote', 'Breakout', 'Learning Lab', 'Customer Story', 'Expo'].includes(session.category) && "bg-slate-50 text-slate-700 border-slate-200 dark:bg-slate-900/30 dark:text-slate-300 dark:border-slate-800"
               )}>
                 {session.category}
               </span>

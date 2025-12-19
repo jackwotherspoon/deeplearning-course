@@ -1,30 +1,67 @@
-import { useState, useMemo } from 'react';
-import { Search, Filter, Calendar, MapPin, Clock, ArrowRight, User } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { useMemo } from 'react';
+import { Search, Filter, Calendar, Layers, Mic, Tag } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useSearchParams } from 'react-router-dom';
 import { SESSIONS, type Session } from '../data/sessions';
+import { SessionTile } from '../components/SessionTile';
 
 export const Catalog = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedDay, setSelectedDay] = useState<string>('All');
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  // Get filter values from URL or default to 'All' or empty string
+  const searchQuery = searchParams.get('search') || '';
+  const selectedDay = searchParams.get('day') || 'All';
+  const selectedCategory = searchParams.get('category') || 'All';
+  const selectedSpeaker = searchParams.get('speaker') || 'All';
+  const selectedLevel = searchParams.get('level') || 'All';
+  const selectedTrack = searchParams.get('track') || 'All';
+
+  // Helper to update a single filter param
+  const updateFilter = (key: string, value: string) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (value === 'All' || value === '') {
+      newParams.delete(key);
+    } else {
+      newParams.set(key, value);
+    }
+    setSearchParams(newParams);
+  };
+
+  // Static options
   const days = ['All', 'Day 1', 'Day 2', 'Day 3'];
   const categories = ['All', 'Keynote', 'Breakout', 'Customer Story', 'Learning Lab', 'Expo'];
+  const levels = ['All', 'Beginner', 'Intermediate', 'Advanced'];
+
+  // Dynamic options derived from data
+  const speakers = useMemo(() => {
+    const all = SESSIONS.map(s => s.speaker);
+    return ['All', ...Array.from(new Set(all)).sort()];
+  }, []);
+
+  const tracks = useMemo(() => {
+    const all = SESSIONS.flatMap(s => s.details?.tracks || []);
+    return ['All', ...Array.from(new Set(all)).sort()];
+  }, []);
 
   const filteredSessions = useMemo<Session[]>(() => {
     return SESSIONS.filter(session => {
+      // Search: Check title, description, speaker, fullDescription
+      const query = searchQuery.toLowerCase();
       const matchesSearch = 
-        session.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        session.speaker.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        session.description.toLowerCase().includes(searchQuery.toLowerCase());
+        session.title.toLowerCase().includes(query) ||
+        session.speaker.toLowerCase().includes(query) ||
+        session.description.toLowerCase().includes(query) ||
+        (session.details?.fullDescription.toLowerCase().includes(query) ?? false);
       
       const matchesDay = selectedDay === 'All' || session.day === selectedDay;
       const matchesCategory = selectedCategory === 'All' || session.category === selectedCategory;
+      const matchesSpeaker = selectedSpeaker === 'All' || session.speaker === selectedSpeaker;
+      const matchesLevel = selectedLevel === 'All' || session.details?.level === selectedLevel;
+      const matchesTrack = selectedTrack === 'All' || (session.details?.tracks.includes(selectedTrack) ?? false);
 
-      return matchesSearch && matchesDay && matchesCategory;
+      return matchesSearch && matchesDay && matchesCategory && matchesSpeaker && matchesLevel && matchesTrack;
     });
-  }, [searchQuery, selectedDay, selectedCategory]);
+  }, [searchQuery, selectedDay, selectedCategory, selectedSpeaker, selectedLevel, selectedTrack]);
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-12">
@@ -38,10 +75,10 @@ export const Catalog = () => {
 
         {/* Search and Filter Controls */}
         <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 mb-8">
-          <div className="flex flex-col lg:flex-row gap-6">
+          <div className="flex flex-col gap-6">
             
-            {/* Search */}
-            <div className="flex-1 relative">
+            {/* Row 1: Search */}
+            <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Search className="h-5 w-5 text-slate-400" />
               </div>
@@ -50,43 +87,113 @@ export const Catalog = () => {
                 placeholder="Search sessions, speakers, or topics..."
                 className="block w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-700 rounded-xl leading-5 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 sm:text-sm transition-all"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => updateFilter('search', e.target.value)}
               />
             </div>
 
-            {/* Filters */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* Row 2: Filters Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              
               {/* Day Filter */}
-              <div className="relative min-w-[140px]">
-                <select
-                  value={selectedDay}
-                  onChange={(e) => setSelectedDay(e.target.value)}
-                  className="block w-full pl-3 pr-10 py-3 text-base border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white appearance-none cursor-pointer"
-                >
-                  {days.map((day) => (
-                    <option key={day} value={day}>{day}</option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
-                  <Calendar className="h-4 w-4" />
+              <div className="relative">
+                <label htmlFor="day-filter" className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Day</label>
+                <div className="relative">
+                  <select
+                    id="day-filter"
+                    value={selectedDay}
+                    onChange={(e) => updateFilter('day', e.target.value)}
+                    className="block w-full pl-3 pr-9 py-2.5 text-sm border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-primary-500 focus:border-primary-500 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white appearance-none cursor-pointer"
+                  >
+                    {days.map((day) => (
+                      <option key={day} value={day}>{day}</option>
+                    ))}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+                    <Calendar className="h-4 w-4" />
+                  </div>
                 </div>
               </div>
 
               {/* Category Filter */}
-              <div className="relative min-w-[180px]">
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="block w-full pl-3 pr-10 py-3 text-base border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white appearance-none cursor-pointer"
-                >
-                  {categories.map((cat) => (
-                    <option key={cat} value={cat}>{cat}</option>
-                  ))}
-                </select>
-                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
-                  <Filter className="h-4 w-4" />
+              <div className="relative">
+                <label htmlFor="category-filter" className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Category</label>
+                <div className="relative">
+                  <select
+                    id="category-filter"
+                    value={selectedCategory}
+                    onChange={(e) => updateFilter('category', e.target.value)}
+                    className="block w-full pl-3 pr-9 py-2.5 text-sm border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-primary-500 focus:border-primary-500 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white appearance-none cursor-pointer"
+                  >
+                    {categories.map((cat) => (
+                      <option key={cat} value={cat}>{cat}</option>
+                    ))}
+                  </select>
+                   <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+                    <Filter className="h-4 w-4" />
+                  </div>
                 </div>
               </div>
+
+               {/* Level Filter */}
+               <div className="relative">
+                <label htmlFor="level-filter" className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Level</label>
+                <div className="relative">
+                  <select
+                    id="level-filter"
+                    value={selectedLevel}
+                    onChange={(e) => updateFilter('level', e.target.value)}
+                    className="block w-full pl-3 pr-9 py-2.5 text-sm border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-primary-500 focus:border-primary-500 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white appearance-none cursor-pointer"
+                  >
+                    {levels.map((lvl) => (
+                      <option key={lvl} value={lvl}>{lvl}</option>
+                    ))}
+                  </select>
+                   <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+                    <Layers className="h-4 w-4" />
+                  </div>
+                </div>
+              </div>
+
+               {/* Track Filter */}
+               <div className="relative">
+                <label htmlFor="track-filter" className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Track</label>
+                <div className="relative">
+                  <select
+                    id="track-filter"
+                    value={selectedTrack}
+                    onChange={(e) => updateFilter('track', e.target.value)}
+                    className="block w-full pl-3 pr-9 py-2.5 text-sm border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-primary-500 focus:border-primary-500 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white appearance-none cursor-pointer"
+                  >
+                    {tracks.map((track) => (
+                      <option key={track} value={track}>{track}</option>
+                    ))}
+                  </select>
+                   <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+                    <Tag className="h-4 w-4" />
+                  </div>
+                </div>
+              </div>
+
+               {/* Speaker Filter */}
+               <div className="relative">
+                <label htmlFor="speaker-filter" className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Speaker</label>
+                <div className="relative">
+                  <select
+                    id="speaker-filter"
+                    value={selectedSpeaker}
+                    onChange={(e) => updateFilter('speaker', e.target.value)}
+                    className="block w-full pl-3 pr-9 py-2.5 text-sm border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-primary-500 focus:border-primary-500 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white appearance-none cursor-pointer"
+                  >
+                    {speakers.map((spk) => (
+                      <option key={spk} value={spk}>{spk}</option>
+                    ))}
+                  </select>
+                   <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+                    <Mic className="h-4 w-4" />
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
           
@@ -94,6 +201,14 @@ export const Catalog = () => {
             <p className="text-sm text-slate-500 dark:text-slate-400">
               Showing {filteredSessions.length} sessions
             </p>
+            {(searchQuery || selectedDay !== 'All' || selectedCategory !== 'All' || selectedLevel !== 'All' || selectedSpeaker !== 'All' || selectedTrack !== 'All') && (
+              <button 
+                onClick={() => setSearchParams({})}
+                className="text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium"
+              >
+                Clear all filters
+              </button>
+            )}
           </div>
         </div>
 
@@ -102,59 +217,7 @@ export const Catalog = () => {
           <AnimatePresence mode="popLayout">
             {filteredSessions.length > 0 ? (
               filteredSessions.map((session) => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.2 }}
-                  key={session.id}
-                  className="group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all flex flex-col"
-                >
-                  <div className="flex justify-between items-start mb-4">
-                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                      ${session.category === 'Keynote' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300' :
-                        session.category === 'Breakout' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300' :
-                        session.category === 'Learning Lab' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' :
-                        'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300'
-                      }`}>
-                      {session.category}
-                    </span>
-                    <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">
-                      {session.day}
-                    </span>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                    {session.title}
-                  </h3>
-                  
-                  <p className="text-slate-600 dark:text-slate-400 mb-6 line-clamp-2 flex-grow">
-                    {session.description}
-                  </p>
-                  
-                  <div className="space-y-3 pt-6 border-t border-slate-100 dark:border-slate-800">
-                    <div className="flex items-center text-sm text-slate-600 dark:text-slate-400">
-                      <User className="h-4 w-4 mr-2 text-slate-400" />
-                      {session.speaker}
-                    </div>
-                    <div className="flex items-center text-sm text-slate-600 dark:text-slate-400">
-                      <Clock className="h-4 w-4 mr-2 text-slate-400" />
-                      {session.time}
-                    </div>
-                    <div className="flex items-center text-sm text-slate-600 dark:text-slate-400">
-                      <MapPin className="h-4 w-4 mr-2 text-slate-400" />
-                      {session.location}
-                    </div>
-                  </div>
-
-                  <Link 
-                    to={`/catalog/${session.id}`}
-                    className="mt-6 inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
-                  >
-                    View Details <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </motion.div>
+                <SessionTile key={session.id} session={session} />
               ))
             ) : (
               <motion.div 
